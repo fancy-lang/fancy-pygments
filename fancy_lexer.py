@@ -53,7 +53,7 @@ class FancyLexer(RegexLexer):
             # Operators
             (r'[-+*/~,<>=&!?%^\[\]]+', Operator),
             # constants
-            (r'(nil|false|true)\b', Name.Constant),
+            (r'(self|super|nil|false|true)\b', Name.Constant),
             (r'[(){};,/?\|:\\]', Punctuation),
             # names
             ('(Object|Array|Hash|Directory|File|Class|String|Number|Enumerable|FancyEnumerable|Block|TrueClass|NilClass|FalseClass|Tuple|Symbol|Stack|Set|FancySpec|Method|Package|Range)\b', Name.Builtin),
