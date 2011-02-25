@@ -1,6 +1,16 @@
 from pygments.lexer import RegexLexer
 from pygments.token import *
 
+import re
+
+from pygments.lexer import Lexer, RegexLexer, ExtendedRegexLexer, \
+     LexerContext, include, combined, do_insertions, bygroups, using
+from pygments.token import Error, Text, Other, \
+     Comment, Operator, Keyword, Name, String, Number, Generic, Punctuation
+from pygments.util import get_bool_opt, get_list_opt, shebang_matches
+from pygments import unistring as uni
+
+
 class FancyLexer(RegexLexer):
     """
     Pygments Lexer For `Fancy <http://www.fancy-lang.org/>`.
