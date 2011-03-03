@@ -12,11 +12,15 @@ class FancyLexer(RegexLexer):
     Fancy is a self-hosted, pure object-oriented, dynamic,
     class-based, concurrent general-purpose programming language
     running on Rubinius, the Ruby VM.
+
+    **New in Pygments 1.5**
     """
+
     name = 'Fancy'
     filenames = ['*.fy', '*.fancypack']
     aliases = ['fancy', 'fy']
     mimetypes = ['text/x-fancysrc']
+
     tokens = {
         # copied from PerlLexer:
         'balanced-regex': [
