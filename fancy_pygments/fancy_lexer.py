@@ -36,7 +36,6 @@ class FancyLexer(RegexLexer):
             (r'\$(\\\\|\\\$|[^\$])*\$[egimosx]*', String.Regex, '#pop'),
         ],
         'root': [
-            (r'\n', Text),
             (r'\s+', Text),
 
             # balanced delimiters (copied from PerlLexer):
@@ -50,26 +49,29 @@ class FancyLexer(RegexLexer):
             # Comments
             (r'#(.*?)\n', Comment.Single),
             # Symbols
-            (r'\'[\S]*', String.Symbol),
-            # DoubleQuotedString
-            (r'"(\\\\|\\"|[^"])*"', String),
+            (r'\'[^\'\s]+', String.Symbol),
             # Multi-line DoubleQuotedString
             (r'"""(\\\\|\\"|[^"])*"""', String),
+            # DoubleQuotedString
+            (r'"(\\\\|\\"|[^"])*"', String),
             # keywords
             (r'(def|class|try|catch|finally|retry|return|return_local|match|case|->|=>)\b', Keyword),
             # Operators
-            (r'[-+*/~,<>=&!?%^\[\]]+', Operator),
             # constants
             (r'(self|super|nil|false|true)\b', Name.Constant),
             (r'[(){};,/?\|:\\]', Punctuation),
             # names
             ('(Object|Array|Hash|Directory|File|Class|String|Number|Enumerable|FancyEnumerable|Block|TrueClass|NilClass|FalseClass|Tuple|Symbol|Stack|Set|FancySpec|Method|Package|Range)\b', Name.Builtin),
+            # functions
             (r'[a-zA-Z]([a-zA-Z0-9_]|[-+?!=*/^><%])*:', Name.Function),
+            # operators, must be below functions
+            (r'[-+*/~,<>=&!?%^\[\]]+', Operator),
             ('[A-Z][a-zA-Z0-9_]*', Name.Constant),
             ('@[a-zA-Z_][a-zA-Z0-9_]*', Name.Variable.Instance),
             ('@@[a-zA-Z_][a-zA-Z0-9_]*', Name.Variable.Class),
             ('[a-zA-Z_][a-zA-Z0-9_]*', Name),
-            # numbers
+            # numbers - / checks are necessary to avoid mismarking regexes,
+            # see comment in RubyLexer
             (r'(0(o|O)?[0-7]+(?:_[0-7]+)*)(\s*)([/?])?',
              bygroups(Number.Oct, Text, Operator)),
             (r'(0(x|X)[0-9A-Fa-f]+(?:_[0-9A-Fa-f]+)*)(\s*)([/?])?',
