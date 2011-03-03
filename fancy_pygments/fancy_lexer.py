@@ -55,13 +55,16 @@ class FancyLexer(RegexLexer):
             # DoubleQuotedString
             (r'"(\\\\|\\"|[^"])*"', String),
             # keywords
-            (r'(def|class|try|catch|finally|retry|return|return_local|match|case|->|=>)\b', Keyword),
-            # Operators
+            (r'(def|class|try|catch|finally|retry|return|return_local|match|'
+             r'case|->|=>)\b', Keyword),
             # constants
             (r'(self|super|nil|false|true)\b', Name.Constant),
             (r'[(){};,/?\|:\\]', Punctuation),
             # names
-            ('(Object|Array|Hash|Directory|File|Class|String|Number|Enumerable|FancyEnumerable|Block|TrueClass|NilClass|FalseClass|Tuple|Symbol|Stack|Set|FancySpec|Method|Package|Range)\b', Name.Builtin),
+            (r'(Object|Array|Hash|Directory|File|Class|String|Number|'
+             r'Enumerable|FancyEnumerable|Block|TrueClass|NilClass|'
+             r'FalseClass|Tuple|Symbol|Stack|Set|FancySpec|Method|Package|'
+             r'Range)\b', Name.Builtin),
             # functions
             (r'[a-zA-Z]([a-zA-Z0-9_]|[-+?!=*/^><%])*:', Name.Function),
             # operators, must be below functions
