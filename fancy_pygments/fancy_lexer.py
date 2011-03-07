@@ -68,7 +68,7 @@ class FancyLexer(RegexLexer):
             # functions
             (r'[a-zA-Z]([a-zA-Z0-9_]|[-+?!=*/^><%])*:', Name.Function),
             # operators, must be below functions
-            (r'[-+*/~,<>=&!?%^\[\]]+', Operator),
+            (r'[-+*/~,<>=&!?%^\[\]\.$]+', Operator),
             ('[A-Z][a-zA-Z0-9_]*', Name.Constant),
             ('@[a-zA-Z_][a-zA-Z0-9_]*', Name.Variable.Instance),
             ('@@[a-zA-Z_][a-zA-Z0-9_]*', Name.Variable.Class),
