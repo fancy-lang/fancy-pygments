@@ -49,7 +49,7 @@ class FancyLexer(RegexLexer):
             # Comments
             (r'#(.*?)\n', Comment.Single),
             # Symbols
-            (r'\'([^\'\s\[\]]+|\[\])', String.Symbol),
+            (r'\'([^\'\s\[\]\(\)\{\}]+|\[\])', String.Symbol),
             # Multi-line DoubleQuotedString
             (r'"""(\\\\|\\"|[^"])*"""', String),
             # DoubleQuotedString
