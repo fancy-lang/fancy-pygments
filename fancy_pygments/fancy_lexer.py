@@ -72,6 +72,7 @@ class FancyLexer(RegexLexer):
             ('[A-Z][a-zA-Z0-9_]*', Name.Constant),
             ('@[a-zA-Z_][a-zA-Z0-9_]*', Name.Variable.Instance),
             ('@@[a-zA-Z_][a-zA-Z0-9_]*', Name.Variable.Class),
+            (r'(@|@@)', Operator),
             ('[a-zA-Z_][a-zA-Z0-9_]*', Name),
             # numbers - / checks are necessary to avoid mismarking regexes,
             # see comment in RubyLexer
