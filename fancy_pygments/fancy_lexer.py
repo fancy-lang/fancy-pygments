@@ -50,6 +50,8 @@ class FancyLexer(RegexLexer):
             (r'#(.*?)\n', Comment.Single),
             # Symbols
             (r'\'([^\'\s\[\]\(\)\{\}]+|\[\])', String.Symbol),
+            # dynamic variables
+            (r'\*[a-zA-Z0-9_-]+\*', String.Symbol),
             # Multi-line DoubleQuotedString
             (r'"""(\\\\|\\"|[^"])*"""', String),
             # DoubleQuotedString

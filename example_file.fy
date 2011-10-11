@@ -126,3 +126,9 @@ pm match_with_extract: "Hello : World!"
 # async sends
 42 @@ println
 42 @@ upto: 100
+
+# dynamic variables:
+*stdout* println: "foo"
+let: '*stdout* be: nil in: {
+  # do nothing
+}
